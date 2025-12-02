@@ -16,20 +16,19 @@ def main (args: List String) : IO UInt32 := do
       | 'L'  =>
         let rotation := it.next.remainingToString.trim.toNat!
         for _ in [0:rotation] do
-          dial_unrestricted := dial_unrestricted - 1
           if dial_unrestricted == 0 then
             final := final + 1
+          dial_unrestricted := dial_unrestricted - 1
           if dial_unrestricted == -1 then
             dial_unrestricted := 99
 
       | 'R' =>
         let rotation := it.next.remainingToString.trim.toNat!
         for _ in [0:rotation] do
-          dial_unrestricted := dial_unrestricted + 1
           if dial_unrestricted == 0 then
             final := final + 1
+          dial_unrestricted := dial_unrestricted + 1
           if dial_unrestricted == 100 then
-            final := final + 1
             dial_unrestricted := 0
 
       | _ => throw <| IO.userError "invalid input"
