@@ -6,8 +6,6 @@ def main (args: List String) : IO UInt32 := do
   let mut dial_unrestricted: Int := 50
   let mut final: Int := 0
 
-  let mut count:=0
-
   while true do
     let line <- (handle.getLine)
     if line.isEmpty then
@@ -35,8 +33,6 @@ def main (args: List String) : IO UInt32 := do
             dial_unrestricted := 0
 
       | _ => throw <| IO.userError "invalid input"
-
-    IO.println s!"line: {count}|dial: {dial_unrestricted}|count:{final}"
 
   IO.println s!"Final: {final}"
   return 0
